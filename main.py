@@ -1,6 +1,9 @@
 import socket, sys, threading
 from queue import Queue
 
+print_lock = threading.Lock()
+q = Queue()
+
 def scan_thread(ip, port):
     while True:
         port = q.get()
