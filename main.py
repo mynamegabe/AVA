@@ -4,7 +4,7 @@ from queue import Queue
 print_lock = threading.Lock()
 q = Queue()
 
-def scan_thread(ip, port):
+def scan_thread(ip):
     while True:
         port = q.get()
         tcp_scan(ip, port)
@@ -14,10 +14,10 @@ def tcp_scan(ip,p):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     try:
-        result = socket.connect_ex((ip,p))
+        result = s.connect_ex((ip,p))
         if result == 0:
-            print(f"port {p}")
-        sock.close()
+            print(f"port {p} open")
+        s.close()
     except socket.error:
         print("Machine could not be reached")
         sys.exit()
@@ -36,7 +36,7 @@ def base(addr):
             addr_valid = False
             print("Hostname not resolved")
 
-    port_range = 80
+    port_range = 100
 
     if addr_valid:
         for _ in range(port_range):

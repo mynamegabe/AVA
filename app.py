@@ -16,13 +16,16 @@ def index():
     return render_template('index.html')
 
 
-if __name__ == "__main__":
-    ip = '127.0.0.1'
-    web_thread = Thread(target=web)
-    web_thread.start()
+@app.route('/start', methods=['POST'])
+def start():
+    hostname = request.form['hostname']
 
-    main_thread = Thread(target=base, args=[ip])
+    main_thread = Thread(target=base, args=[hostname])
     main_thread.start()
 
     web_thread.join()
     main_thread.join()
+
+if __name__ == "__main__":
+    web_thread = Thread(target=web)
+    web_thread.start()
