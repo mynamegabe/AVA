@@ -8,7 +8,7 @@ app = Flask(__name__, static_url_path='',static_folder='static')
 app.secret_key = "0b3lUsK@5p3r5KY"
 
 def web():
-    app.run(host="0.0.0.0")
+    app.run(host="127.0.0.1")
 
 
 @app.route('/')
@@ -23,8 +23,10 @@ def start():
     main_thread = Thread(target=base, args=[hostname])
     main_thread.start()
 
-    web_thread.join()
-    main_thread.join()
+
+    return {'msg': 'Y'}
+
+    #main_thread.join()
 
 if __name__ == "__main__":
     web_thread = Thread(target=web)
