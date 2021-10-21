@@ -5,10 +5,12 @@ print_lock = threading.Lock()
 q = Queue()
 
 def scan_thread(ip):
+    ports = []
     while True:
         port = q.get()
-        tcp_scan(ip, port)
+        ports.append(tcp_scan(ip, port))
         q.task_done()
+    return ports
 
 def tcp_scan(ip,p):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -16,7 +18,7 @@ def tcp_scan(ip,p):
     try:
         result = s.connect_ex((ip,p))
         if result == 0:
-            print(f"port {p} open")
+            return p
         s.close()
     except socket.error:
         print("Machine could not be reached")
