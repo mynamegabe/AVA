@@ -6,3 +6,4 @@ python-socketio==4.6.0
 eventlet
 gunicorn
 flask_cors
+requests

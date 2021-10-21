@@ -17,6 +17,9 @@ wsapp = socketio.WSGIApp(sio, static_files={
     '/': {'content_type': 'text/html', 'filename': 'index.html'}
 })
 
+data = {'type': 'data', 'content': ''}
+send = False
+
 def web():
     app.run(host="127.0.0.1")
 
@@ -32,11 +35,7 @@ def index():
 @cross_origin()
 def start():
     hostname = request.form['hostname']
-
-    main_thread = Thread(target=base, args=[hostname])
-    main_thread.start()
-
-
+    main_thread = Thread(target=base, args=[hostname]).start()
     return {'msg': 'Y'}
 
     #main_thread.join()
@@ -45,24 +44,30 @@ def start():
 def websocket():
     eventlet.wsgi.server(eventlet.listen(('', 6001)), wsapp)
 
-@sio.event
-def connect(sid, environ):
-    sio.send('hello')
+
+@sio.on('connect')
+def handleconnect(sid, environ):
+    sio.send('hello',broadcast=True)
     print("connect ", sid)
 
-@sio.event
-def my_message(sid, data):
-    print('message ', data)
-
-@sio.event
-def sendmsg():
-    threading.Timer(5.0, sendmsg).start()
-    sio.emit('message',{'data': 'hello'})
-    #print('l')
+@sio.on('message')
+def handlemsg(sid,msg):
+    global send
+    print(msg)
+    if type(msg) == str:
+        pass
+        #print(msg)
+    else:
+        if msg['type'] == 'data':
+            data['content'] = msg['content']
+            send = True
+        elif msg['type'] == 'wait' and send:
+            sio.send(data)
+            send = False
 
 
 if __name__ == "__main__":
-    sendmsg()
+    #sendmsg()
 
     web_thread = Thread(target=web)
     web_thread.start()
