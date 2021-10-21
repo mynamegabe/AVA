@@ -4,9 +4,12 @@
 }
 
 :root {
-    --color1: #ecd7d2;
+    /*--color1: #ecd7d2;
     --color1-complement: #c69c96;
-    --color1-complement2: #a07f88;
+    --color1-complement2: #a07f88;*/
+    --color1: #1a1a1d;
+    --color1-complement: #6f2232;
+    --color1-complement2: #f76c6c;
     --color2: #313E50;
     --color2-complement: #3A435E ;
     --main-text: black;
@@ -29,7 +32,9 @@ body {
     padding: 20px;
     height:200px;
     background-color: var(--color1-complement);
-    border-radius: 0px 0px 20px 20px;
+    /*border-radius: 0px 0px 20px 20px;*/
+    border-radius: 20px;
+    margin: 20px;
 }
 
 .main {
@@ -74,6 +79,11 @@ form h5 {
 form fieldset {
     width: fit-content;
     border: 0px;
+}
+
+h1 {
+    font-family: var(--title-font);
+    text-align:center;
 }
 
 h2 {
