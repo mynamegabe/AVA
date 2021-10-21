@@ -6,6 +6,9 @@ import socketio
 import eventlet
 from main import base, tcp_scan, scan_thread
 import threading
+from weasyprint import HTML, CSS
+from weasyprint.text.fonts import FontConfiguration
+from datetime import datetime
 
 app = Flask(__name__, static_url_path='',static_folder='static')
 app.secret_key = "0b3lUsK@5p3r5KY"
@@ -65,6 +68,20 @@ def handlemsg(sid,msg):
             sio.send(data)
             send = False
 
+def generate_pdf():
+    now = datetime.now()
+    font_config = FontConfiguration()
+    html = HTML(string=f'<h1>Vulnerability Assessment</h1>\n\
+                       <h3>{now}</h3>')
+    css = CSS(string='''
+        @font-face {
+            font-family: Gentium;
+            src: url(http://example.com/fonts/Gentium.otf);
+        }
+        h1 { font-family: Gentium }''', font_config=font_config)
+    html.write_pdf(
+        'report.pdf', stylesheets=[css],
+        font_config=font_config)
 
 if __name__ == "__main__":
     #sendmsg()
@@ -74,3 +91,5 @@ if __name__ == "__main__":
 
     ws = Thread(target=websocket)
     ws.start()
+
+    generate_pdf()
