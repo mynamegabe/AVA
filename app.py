@@ -49,6 +49,7 @@ def generate_pdf():
         'report.pdf', stylesheets=[css],
         font_config=font_config)
 
+
 if __name__ == "__main__":
     #sendmsg()
 
