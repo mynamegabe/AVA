@@ -1,18 +1,14 @@
 # SecurIt
 
-Modules must include in code:
-complete = False
+```console
+pip install -r requirements.txt
+```
 
+## Linux
+```console
+apt-get install pango1.0-tools
+```
 
-@sio.event
-def connect():
-    print("I'm connected!")
-
-@sio.event
-def message(data): 
-    if complete:
-    	sio.send(data)
-    	sio.disconnect()
-
-# when module is complete
-complete = True
+## Windows
+Install GTK
+https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases
