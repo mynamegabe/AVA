@@ -10,13 +10,16 @@ $( "#submit" ).click(function() {
     }});
 });
 
-const socket = io('http://127.0.0.1:6001')
+url = 'http://127.0.0.1:6001'
+/*url = 'http://vsc.gabrielseet.com:6001'*/ /*for hosted*/
+const socket = io(url)
 
 socket.on('connect', function() {
     socket.send('user connected')
 });
 
 socket.on("message", function(msg) {
+    console.log(msg)
     if (msg['type'] == 'data') {
         clearInterval(wait)
         console.log(msg['content'])

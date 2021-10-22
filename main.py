@@ -19,6 +19,7 @@ def message(data): #send ports
     if complete == False:
         sio.send({'type':'data', 'content-type': 'ports', 'content':portlist})
         complete = True
+        print("Ports sent")
     else:
         sio.disconnect()
 
