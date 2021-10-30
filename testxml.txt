@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.91 scan initiated Sat Oct 30 15:57:05 2021 as: nmap -oX - -p 0-80 -sV 35.239.85.118 -->
+<nmaprun scanner="nmap" args="nmap -oX - -p 0-80 -sV 35.239.85.118" start="1635623825" startstr="Sat Oct 30 15:57:05 2021" version="7.91" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="81" services="0-80"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="35.239.85.118" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1635623825" endtime="1635623853"><status state="up" reason="reset" reason_ttl="128"/>
+<address addr="35.239.85.118" addrtype="ipv4"/>
+<hostnames>
+<hostname name="118.85.239.35.bc.googleusercontent.com" type="PTR"/>
+</hostnames>
+<ports><extraports state="filtered" count="79">
+<extrareasons reason="no-responses" count="79"/>
+</extraports>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="ssh" product="OpenSSH" version="7.9p1 Debian 10+deb10u2" extrainfo="protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:7.9p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="http" servicefp="SF-Port80-TCP:V=7.91%I=7%D=10/30%Time=617DA39A%P=x86_64-pc-linux-gnu%r(GetRequest,DA,&quot;HTTP/1\.1\x20302\x20Found\r\nLocation:\x20\./login\r\nVary:\x20Accept,\x20Accept-Encoding\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r\nContent-Length:\x2029\r\nDate:\x20Sat,\x2030\x20Oct\x202021\x2019:57:14\x20GMT\r\nConnection:\x20close\r\n\r\nFound\.\x20Redirecting\x20to\x20\./login&quot;)%r(HTTPOptions,CB,&quot;HTTP/1\.1\x20200\x20OK\r\nAllow:\x20GET,\x20HEAD\r\nContent-Length:\x209\r\nContent-Type:\x20text/plain\r\nX-Content-Type-Options:\x20nosniff\r\nVary:\x20Accept-Encoding\r\nDate:\x20Sat,\x2030\x20Oct\x202021\x2019:57:14\x20GMT\r\nConnection:\x20close\r\n\r\nGET,\x20HEAD&quot;)%r(RTSPRequest,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(X11Probe,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(FourOhFourRequest,EB,&quot;HTTP/1\.1\x20404\x20Not\x20Found\r\nContent-Type:\x20application/json;\x20charset=utf-8\r\nContent-Length:\x2021\r\nETag:\x20W/\&quot;15-5KajTCx0AJD0xogoSeOjjV2M8K0\&quot;\r\nVary:\x20Accept-Encoding\r\nDate:\x20Sat,\x2030\x20Oct\x202021\x2019:57:15\x20GMT\r\nConnection:\x20close\r\n\r\n{\&quot;error\&quot;:\&quot;Not\x20Found\&quot;}&quot;)%r(RPCCheck,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(DNSVersionBindReqTCP,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(DNSStatusRequestTCP,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(Help,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(SSLSessionReq,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(TerminalServerCookie,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(TLSSessionReq,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(Kerberos,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(SMBProgNeg,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(LPDString,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;)%r(LDAPSearchReq,2F,&quot;HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\n\r\n&quot;);" method="probed" conf="10"/></port>
+</ports>
+<times srtt="42648" rttvar="77361" to="352092"/>
+</host>
+<runstats><finished time="1635623853" timestr="Sat Oct 30 15:57:33 2021" summary="Nmap done at Sat Oct 30 15:57:33 2021; 1 IP address (1 host up) scanned in 27.83 seconds" elapsed="27.83" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

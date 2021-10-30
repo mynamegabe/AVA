@@ -1,0 +1,11 @@
+[Unit]
+Description=AVA
+After=multi-user.target
+
+[Service]
+WorkingDirectory=/root/Desktop/SecurIT
+ExecStart=python3 app.py & python3 flaskws.py
+Type=idle
+
+[Install]
+WantedBy=multi-user.target

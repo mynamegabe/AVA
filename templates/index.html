@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>AVA</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="pre.js"></script>
@@ -11,7 +12,7 @@
 </head>
 <body>
     <div class="options">
-        <h1>Obelus Secur'IT</h1>
+        <h1>Project AVA</h1>
         <form>
             <fieldset>
                 <h5>Hostname</h5><br>
@@ -19,12 +20,17 @@
                 <button type="button" id="submit">Start</button>
             </fieldset>
         </form>
+        <h3 id="message">Inactive</h3>
     </div>
     <div class="main">
         <div class="content" id="ports">
             <h2>Ports</h2>
         </div>
+        <div class="content" id="searchsploit">
+            <h2>Searchsploit</h2>
+        </div>
     </div>
+    <button type="button" id="genpdf">Generate PDF</button>
 </body>
 <footer>
     <script type="text/javascript" src="script.js"></script>

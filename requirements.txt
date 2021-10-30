@@ -7,3 +7,5 @@ eventlet
 gunicorn
 flask_cors
 requests
+python-nmap
+pytz

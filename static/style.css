@@ -50,6 +50,7 @@ body {
     min-width: 250px;
     background-color: white;
     margin:10px;
+    color: var(--main-text);
 }
 
 form input {
@@ -93,4 +94,23 @@ h2 {
 
 h4 {
     color: var(--main-text);
+}
+
+.content h4 {
+    color: var(--main-text);
+    margin: 0px;
+}
+
+.content * {
+    color: var(--main-text);
+}
+
+#genpdf {
+    margin: 20px;
+    color:black;
+    cursor: pointer;
+}
+
+#message {
+    margin: 10px;
 }

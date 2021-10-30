@@ -8,6 +8,7 @@ import threading
 from weasyprint import HTML, CSS
 from weasyprint.text.fonts import FontConfiguration
 from datetime import datetime
+import pytz
 
 app = Flask(__name__, static_url_path='',static_folder='static')
 app.secret_key = "0b3lUsK@5p3r5KY"
@@ -35,10 +36,15 @@ def start():
 
 
 def generate_pdf():
-    now = datetime.now()
+    time_zone = pytz.timezone("Asia/Singapore")
+    utctime = datetime.utcnow()
+    utctime = utctime.replace(tzinfo=pytz.utc)
+    now = utctime.astimezone(time_zone)
+    now = now.strftime("%m/%d/%Y, %H:%M:%S")
     font_config = FontConfiguration()
-    html = HTML(string=f'<h1>Vulnerability Assessment</h1>\n\
-                       <h3>{now}</h3>')
+    htmlstring = f'<h1>Vulnerability Assessment</h1>\n\
+                       <h3>{now}</h3>' + open('report.html','r').read()
+    html = HTML(string=htmlstring)
     css = CSS(string='''
         @font-face {
             font-family: Gentium;
@@ -48,12 +54,17 @@ def generate_pdf():
     html.write_pdf(
         'report.pdf', stylesheets=[css],
         font_config=font_config)
+    with open('report.html','w+') as w:
+        w.truncate(0)
+        w.close()
 
+@app.route('/generate-pdf', methods=['POST'])
+def generate_pdf_web():
+    generate_pdf()
+    return {'msg': 'Y'}
 
 if __name__ == "__main__":
-    #sendmsg()
+    # sendmsg()
 
     web_thread = Thread(target=web)
     web_thread.start()
-
-    generate_pdf()
